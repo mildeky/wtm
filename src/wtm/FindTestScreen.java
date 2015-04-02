@@ -41,7 +41,7 @@ public class FindTestScreen {
 		setTextFieldSizes(wireField, stuckAtField);
 		
 		Button go = new Button("Go");
-		go.setOnMouseClicked(e -> findTestResults());
+		go.setOnMouseClicked(e -> findTestResults(stage));
 		
 		wireBox.getChildren().addAll(wireLabel, wireField);
 		stuckAtBox.getChildren().addAll(stuckAtLabel, stuckAtField);
@@ -57,9 +57,12 @@ public class FindTestScreen {
 		stuckAtField.setMinSize(200, 50);
 	}
 	
-	private Object findTestResults() {
-		// TODO Auto-generated method stub
-		return null;
+	private void findTestResults(Stage stage) {
+		FindTestScreenAnswer ftsa = new FindTestScreenAnswer();
+		myScene = ftsa.init(stage, width, height);
+		stage.setTitle("Find Test Answer");
+		stage.setScene(myScene);
+		stage.show();
 	}
 
 }
