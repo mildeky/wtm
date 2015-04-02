@@ -1,0 +1,20 @@
+.root {
+	-fx-background-color: maroon; 
+}
+
+.button{
+    -fx-text-fill: rgb(20, 45, 92);
+    -fx-border-color: rgb(20, 45, 92);
+    -fx-border-radius: 5;
+    -fx-padding: 3 6 6 6;
+    -fx-font-size: 18pt;
+}
+
+.label{
+	-fx-text-fill: rgb(20, 45, 92);
+	-fx-font-size: 20pt;
+}
+
+.text-field {
+	-fx-font-size: 16pt;
+}
