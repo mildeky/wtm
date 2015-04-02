@@ -32,6 +32,7 @@ public class FindTestScreen {
 		layout = new VBox(150);
 		HBox wireBox = new HBox();
 		HBox stuckAtBox = new HBox();
+		HBox buttons = new HBox(50);
 		
 		Label wireLabel = new Label("Wire: ");
 		Label stuckAtLabel = new Label("Stuck-at- ");
@@ -41,14 +42,18 @@ public class FindTestScreen {
 		setTextFieldSizes(wireField, stuckAtField);
 		
 		Button go = new Button("Go");
+		Button back = new Button("Back");
+		buttons.getChildren().addAll(back, go);
+		buttons.setAlignment(Pos.CENTER);
 		go.setOnMouseClicked(e -> findTestResults(stage));
+		back.setOnMouseClicked(e -> startMainScreen(stage));
 		
 		wireBox.getChildren().addAll(wireLabel, wireField);
 		stuckAtBox.getChildren().addAll(stuckAtLabel, stuckAtField);
 		wireBox.setAlignment(Pos.CENTER);
 		stuckAtBox.setAlignment(Pos.CENTER);
 		
-		layout.getChildren().addAll(wireBox, stuckAtBox, go);
+		layout.getChildren().addAll(wireBox, stuckAtBox, buttons);
 		layout.setAlignment(Pos.CENTER);
 	}
 
@@ -62,6 +67,13 @@ public class FindTestScreen {
 		myScene = ftsa.init(stage, width, height);
 		stage.setTitle("Find Test Answer");
 		stage.setScene(myScene);
+		stage.show();
+	}
+	
+	private void startMainScreen(Stage stage) {
+		MainScreen mainScreen = new MainScreen();
+		Scene scene = mainScreen.init(stage, width, height);
+		stage.setScene(scene);
 		stage.show();
 	}
 

@@ -35,6 +35,7 @@ public class FindTestScreenAnswer {
 		HBox inputTwoBox = new HBox();
 		HBox correctResBox = new HBox();
 		HBox errorResBox = new HBox();
+		HBox buttons = new HBox(50);
 		
 		Label inputOneLabel   = new Label(" Test  Input 1: ");
 		Label inputTwoLabel   = new Label("       Input 2: ");
@@ -49,7 +50,11 @@ public class FindTestScreenAnswer {
 		writeToFields(inputOneField, inputTwoField, correctResField, errorResField);
 		
 		Button exit = new Button("Exit");
+		Button back = new Button("Back");
+		buttons.getChildren().addAll(back, exit);
+		buttons.setAlignment(Pos.CENTER);
 		exit.setOnMouseClicked(e -> exit(stage));
+		back.setOnMouseClicked(e -> findTestScreen(stage));
 		
 		inputOneBox.getChildren().addAll(inputOneLabel, inputOneField);
 		inputTwoBox.getChildren().addAll(inputTwoLabel, inputTwoField);
@@ -60,7 +65,7 @@ public class FindTestScreenAnswer {
 		correctResBox.setAlignment(Pos.CENTER);
 		errorResBox.setAlignment(Pos.CENTER);
 		
-		layout.getChildren().addAll(inputOneBox, inputTwoBox, correctResBox, errorResBox, exit);
+		layout.getChildren().addAll(inputOneBox, inputTwoBox, correctResBox, errorResBox, buttons);
 		layout.setAlignment(Pos.CENTER);
 	}
 	
@@ -73,6 +78,14 @@ public class FindTestScreenAnswer {
 	
 	private void writeToFields(TextField tf1, TextField tf2, TextField tf3, TextField tf4) {
 		//TODO: take values from map and write them
+	}
+	
+	private void findTestScreen(Stage stage) {
+		FindTestScreen fts = new FindTestScreen();
+		myScene = fts.init(stage, width, height);
+		stage.setTitle("Find Test");
+		stage.setScene(myScene);
+		stage.show();
 	}
 	
 	private void exit(Stage stage) {
