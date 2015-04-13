@@ -14,20 +14,7 @@ public class FileParser {
 		fileString = fileToParse;
 	}
 
-	public TextField create() {
-		TextField tf = new TextField();
-		try {
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document doc = builder.parse(fileString);
-			
-			//Node node = doc.getElementsByTagName("FullList");
-			
-			
-		} catch(Exception e) {
-			//no catch
-		}
-		return tf;
-	}
+
 	
 	
 

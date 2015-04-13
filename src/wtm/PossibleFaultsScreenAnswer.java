@@ -79,7 +79,11 @@ public class PossibleFaultsScreenAnswer {
 	}
 	
 	private void showList(Stage stage) {
-		//TODO: Do this
+		SampleListOfFaultsScreen slofs = new SampleListOfFaultsScreen();
+		myScene = slofs.init(stage, width, height);
+		stage.setTitle("List of Detectable Faults");
+		stage.setScene(myScene);
+		stage.show();
 	}
 	
 	private void exit(Stage stage) {

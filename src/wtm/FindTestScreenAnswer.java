@@ -15,10 +15,13 @@ public class FindTestScreenAnswer {
 	private double height;
 	private VBox layout;
 	private Scene myScene;
+	
+	private String test;
 
-	public Scene init(Stage stage, double w, double h) {
+	public Scene init(Stage stage, double w, double h, String test) {
 		width = w;
 		height = h;
+		this.test = test;
 		
 		createLayout(stage);
 		
@@ -33,21 +36,15 @@ public class FindTestScreenAnswer {
 		
 		HBox inputOneBox = new HBox();
 		HBox inputTwoBox = new HBox();
-		HBox correctResBox = new HBox();
-		HBox errorResBox = new HBox();
 		HBox buttons = new HBox(50);
 		
 		Label inputOneLabel   = new Label(" Test  Input 1: ");
 		Label inputTwoLabel   = new Label("       Input 2: ");
-		Label correctResLabel = new Label("Correct Result: ");
-		Label errorResLabel   = new Label("  Error Result: ");
 		
 		TextField inputOneField   = new TextField();
 		TextField inputTwoField   = new TextField();
-		TextField correctResField = new TextField();
-		TextField errorResField   = new TextField();
-		setTextFieldSizes(inputOneField, inputTwoField, correctResField, errorResField);
-		writeToFields(inputOneField, inputTwoField, correctResField, errorResField);
+		setTextFieldSizes(inputOneField, inputTwoField);
+		writeToFields(inputOneField, inputTwoField);
 		
 		Button exit = new Button("Exit");
 		Button back = new Button("Back");
@@ -58,26 +55,28 @@ public class FindTestScreenAnswer {
 		
 		inputOneBox.getChildren().addAll(inputOneLabel, inputOneField);
 		inputTwoBox.getChildren().addAll(inputTwoLabel, inputTwoField);
-		correctResBox.getChildren().addAll(correctResLabel, correctResField);
-		errorResBox.getChildren().addAll(errorResLabel, errorResField);
+
 		inputOneBox.setAlignment(Pos.CENTER);
 		inputTwoBox.setAlignment(Pos.CENTER);
-		correctResBox.setAlignment(Pos.CENTER);
-		errorResBox.setAlignment(Pos.CENTER);
 		
-		layout.getChildren().addAll(inputOneBox, inputTwoBox, correctResBox, errorResBox, buttons);
+		layout.getChildren().addAll(inputOneBox, inputTwoBox, buttons);
 		layout.setAlignment(Pos.CENTER);
 	}
 	
-	private void setTextFieldSizes(TextField tf1, TextField tf2, TextField tf3, TextField tf4) {
+	private void setTextFieldSizes(TextField tf1, TextField tf2) {
 		tf1.setMinSize(200, 50);
 		tf2.setMinSize(200, 50);
-		tf3.setMinSize(200, 50);
-		tf4.setMinSize(200, 50);
 	}
 	
-	private void writeToFields(TextField tf1, TextField tf2, TextField tf3, TextField tf4) {
-		//TODO: take values from map and write them
+	private void writeToFields(TextField tf1, TextField tf2) {
+		if(test.equals("53")) {
+			tf1.setText("27");
+			tf2.setText("69");
+		}
+		else if(test.equals("116")) {
+			tf1.setText("89");
+			tf2.setText("195");
+		}
 	}
 	
 	private void findTestScreen(Stage stage) {

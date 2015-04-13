@@ -15,6 +15,7 @@ public class FindTestScreen {
 	private double height;
 	private VBox layout;
 	private Scene myScene;
+	private TextField wireField;
 	
 	public Scene init(Stage stage, double w, double h) {
 		width = w;
@@ -37,7 +38,7 @@ public class FindTestScreen {
 		Label wireLabel = new Label("Wire: ");
 		Label stuckAtLabel = new Label("Stuck-at- ");
 		
-		TextField wireField = new TextField();
+		wireField = new TextField();
 		TextField stuckAtField = new TextField();
 		setTextFieldSizes(wireField, stuckAtField);
 		
@@ -64,7 +65,7 @@ public class FindTestScreen {
 	
 	private void findTestResults(Stage stage) {
 		FindTestScreenAnswer ftsa = new FindTestScreenAnswer();
-		myScene = ftsa.init(stage, width, height);
+		myScene = ftsa.init(stage, width, height, wireField.getText());
 		stage.setTitle("Find Test Answer");
 		stage.setScene(myScene);
 		stage.show();

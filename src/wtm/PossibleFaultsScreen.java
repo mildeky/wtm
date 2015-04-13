@@ -33,46 +33,40 @@ public class PossibleFaultsScreen {
 		
 		HBox inputOneBox = new HBox();
 		HBox inputTwoBox = new HBox();
-		HBox resBox = new HBox();
 		HBox buttons = new HBox(50);
 		
 		Label inputOneLabel   = new Label(" Test  Input 1: ");
 		Label inputTwoLabel   = new Label("       Input 2: ");
-		Label resLabel = new Label("Result: ");
 		
 		TextField inputOneField   = new TextField();
 		TextField inputTwoField   = new TextField();
-		TextField resField = new TextField();
-		setTextFieldSizes(inputOneField, inputTwoField, resField);
+		setTextFieldSizes(inputOneField, inputTwoField);
 		
 		Button go = new Button("Go");
 		Button back = new Button("Back");
 		buttons.getChildren().addAll(back, go);
 		buttons.setAlignment(Pos.CENTER);
-		go.setOnMouseClicked(e -> possibleFaultsScreenAnswer(stage, inputOneField, inputTwoField, resField));
+		go.setOnMouseClicked(e -> possibleFaultsScreenAnswer(stage, inputOneField, inputTwoField));
 		back.setOnMouseClicked(e -> startMainScreen(stage));
 		
 		inputOneBox.getChildren().addAll(inputOneLabel, inputOneField);
 		inputTwoBox.getChildren().addAll(inputTwoLabel, inputTwoField);
-		resBox.getChildren().addAll(resLabel, resField);
 		inputOneBox.setAlignment(Pos.CENTER);
 		inputTwoBox.setAlignment(Pos.CENTER);
-		resBox.setAlignment(Pos.CENTER);
 		
-		layout.getChildren().addAll(inputOneBox, inputTwoBox, resBox, buttons);
+		layout.getChildren().addAll(inputOneBox, inputTwoBox, buttons);
 		layout.setAlignment(Pos.CENTER);
 	}
 	
-	private void setTextFieldSizes(TextField tf1, TextField tf2, TextField tf3) {
+	private void setTextFieldSizes(TextField tf1, TextField tf2) {
 		tf1.setMinSize(200, 50);
 		tf2.setMinSize(200, 50);
-		tf3.setMinSize(200, 50);
 	}
 	
-	private void possibleFaultsScreenAnswer(Stage stage, TextField inputOne, TextField inputTwo, TextField result) {
+	private void possibleFaultsScreenAnswer(Stage stage, TextField inputOne, TextField inputTwo) {
 		int inputOneInt = Integer.parseInt(inputOne.getText());
 		int inputTwoInt = Integer.parseInt(inputTwo.getText());
-		int resultInt = Integer.parseInt(result.getText());
+		int resultInt = inputOneInt * inputTwoInt;
 		
 		PossibleFaultsScreenAnswer pfsa = new PossibleFaultsScreenAnswer();
 		myScene = pfsa.init(stage, width, height, inputOneInt, inputTwoInt, resultInt);
